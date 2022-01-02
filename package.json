@@ -3,6 +3,8 @@
   "scripts": {
     "build": "npx projen build",
     "bundle": "npx projen bundle",
+    "bundle:example.lambda": "npx projen bundle:example.lambda",
+    "bundle:example.lambda:watch": "npx projen bundle:example.lambda:watch",
     "clobber": "npx projen clobber",
     "compile": "npx projen compile",
     "default": "npx projen default",
@@ -31,13 +33,16 @@
     "aws-cdk": "^2.1.0",
     "esbuild": "^0.14.10",
     "eslint": "^8",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.4.5",
     "jest-junit": "^13",
     "json-schema": "^0.4.0",
     "npm-check-updates": "^12",
+    "prettier": "^2.5.1",
     "projen": "^0.49.2",
     "ts-jest": "^27.1.2",
     "ts-node": "^9",
@@ -47,7 +52,6 @@
     "aws-cdk-lib": "^2.1.0",
     "constructs": "^10.0.5"
   },
-  "bundledDependencies": [],
   "license": "Apache-2.0",
   "version": "0.0.0",
   "jest": {

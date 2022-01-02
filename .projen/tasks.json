@@ -26,7 +26,30 @@
     },
     "bundle": {
       "name": "bundle",
-      "description": "Prepare assets"
+      "description": "Prepare assets",
+      "steps": [
+        {
+          "spawn": "bundle:example.lambda"
+        }
+      ]
+    },
+    "bundle:example.lambda": {
+      "name": "bundle:example.lambda",
+      "description": "Create a JavaScript bundle from src/example.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/example.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/example.lambda/index.js\" --external:aws-sdk"
+        }
+      ]
+    },
+    "bundle:example.lambda:watch": {
+      "name": "bundle:example.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/example.lambda.ts",
+      "steps": [
+        {
+          "exec": "esbuild --bundle src/example.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/example.lambda/index.js\" --external:aws-sdk --watch"
+        }
+      ]
     },
     "clobber": {
       "name": "clobber",
@@ -200,7 +223,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk esbuild eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit json-schema npm-check-updates ts-jest ts-node typescript aws-cdk-lib constructs"
+          "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk esbuild eslint-config-prettier eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit json-schema npm-check-updates prettier ts-jest ts-node typescript aws-cdk-lib constructs"
         },
         {
           "exec": "npx projen"
